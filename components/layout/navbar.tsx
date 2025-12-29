@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Menu, FileText } from "lucide-react"
 
 import { cn } from "@/lib/utils"
@@ -38,10 +39,14 @@ export function Navbar() {
         >
             <div className="px-4 md:px-6 flex items-center justify-between">
                 {/* Logo */}
-                <Link href="/" className="font-bold text-lg tracking-tighter flex items-center gap-1">
-                    <span className="text-primary">&lt;</span>
-                    Porto
-                    <span className="text-primary">/&gt;</span>
+                <Link href="/" className="flex items-center hover:opacity-80 transition-opacity">
+                    <Image
+                        src="/logo.png"
+                        alt="Portfolio Logo"
+                        width={100}
+                        height={32}
+                        className="h-8 w-auto grayscale"
+                    />
                 </Link>
 
                 {/* Desktop Nav */}

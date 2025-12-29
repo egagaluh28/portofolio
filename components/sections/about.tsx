@@ -73,12 +73,12 @@ export function About() {
                         >
                             <div className="text-muted-foreground leading-relaxed space-y-4 text-lg">
                                 <p className="relative pl-4 border-l-2 border-primary/50">
-                                    I am a final-year <strong className="text-foreground">Software Engineering Technology</strong> student at <strong className="text-foreground">IPB University</strong> with solid software engineering skills.
-                                    Experienced in designing efficient database schemas, integrating APIs, and automating complex business logic.
+                                    I am a final-year <strong className="text-foreground">Software Engineering Technology</strong> student at <strong className="text-foreground">IPB University</strong> with a strong focus on backend development.
+                                    Experienced in designing efficient database schemas, building secure APIs, and implementing complex business logic with clean architecture principles.
                                 </p>
                                 <p className="relative pl-4 border-l-2 border-secondary/50">
-                                    Dedicated to improving system reliability and performance while meeting deadlines and delivering high-quality solutions.
-                                    Currently creating impactful digital experiences.
+                                    Currently working as a <strong className="text-foreground">Software Engineer Intern</strong> at PT Kuantum Solusi Teknologi, developing large-scale budgeting systems.
+                                    Passionate about creating scalable, high-performance solutions that solve real-world problems.
                                 </p>
                             </div>
                         </motion.div>

@@ -31,10 +31,9 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-6 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
-                >
-                    Building Digital <br className="hidden md:block" />
-                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary italic">Experiences.</span>
+                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-6 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                    Hi, I'm <br className="hidden md:block" />
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary">Muhammad Galuh Gumelar</span>
                 </motion.h1>
 
                 <motion.p
@@ -43,8 +42,8 @@ export function Hero() {
                     transition={{ duration: 0.5, delay: 0.4 }}
                     className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto mb-10"
                 >
-                    Crafting pixel-perfect, interactive, and accessible web interfaces.
-                    Merging technical expertise with design aesthetics.
+                    Software Engineer specializing in backend development and full-stack solutions.
+                    Building scalable systems with clean architecture and efficient database design.
                 </motion.p>
 
                 <motion.div
