@@ -21,7 +21,7 @@ export function ProfileCard() {
                     <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" style={{ backgroundSize: '100% 3px' }} />
 
                     {/* Profile Image */}
-                    <div className="relative w-40 h-40 rounded-full border-4 border-primary/50 overflow-hidden shadow-[0_0_20px_rgba(0,243,255,0.3)]">
+                    <div className="relative w-40 h-40 rounded-full border-4 border-primary/50 overflow-hidden shadow-[0_0_20px_rgba(255,255,255,0.3)]">
                         <Image
                             src="/profile.png"
                             fill

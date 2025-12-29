@@ -15,7 +15,7 @@ export function Background() {
             <div className="absolute inset-0 bg-black [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
 
             <Aurora
-                colorStops={["#00F3FF", "#FF00FF", "#00F3FF"]}
+                colorStops={["#E5E5E5", "#525252", "#E5E5E5"]}
                 blend={0.5}
                 amplitude={1.0}
                 speed={0.5}

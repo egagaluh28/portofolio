@@ -20,8 +20,8 @@ export function Hero() {
                 >
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-primary/20 bg-primary/5 backdrop-blur-sm shadow-sm hover:border-primary/50 transition-colors">
                         <span className="relative flex h-2 w-2">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-200"></span>
                         </span>
                         <span className="text-xs font-medium text-primary">Available for New Projects</span>
                     </div>
@@ -31,7 +31,7 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-6 drop-shadow-[0_0_10px_rgba(0,243,255,0.3)]"
+                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white mb-6 drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]"
                 >
                     Building Digital <br className="hidden md:block" />
                     <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-white to-secondary italic">Experiences.</span>
@@ -53,7 +53,7 @@ export function Hero() {
                     transition={{ duration: 0.5, delay: 0.6 }}
                     className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto"
                 >
-                    <Button size="lg" className="h-12 px-8 rounded-full text-base bg-primary text-black hover:bg-primary/90 shadow-[0_0_20px_rgba(0,243,255,0.4)]" asChild>
+                    <Button size="lg" className="h-12 px-8 rounded-full text-base bg-primary text-black hover:bg-primary/90 shadow-[0_0_20px_rgba(255,255,255,0.4)]" asChild>
                         <Link href="#projects">
                             View My Work <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                         </Link>

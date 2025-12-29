@@ -32,7 +32,7 @@ export function About() {
                                 About <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Me</span>
                             </h2>
 
-                            <div className="text-muted-foreground leading-relaxed space-y-4 text-lg">
+                            <div className="text-muted-foreground leading-relaxed space-y-4 text-left text-lg">
                                 <p>
                                     I am a final-year <strong>Software Engineering Technology</strong> student at <strong>IPB University</strong> with solid backend engineering skills.
                                     Experienced in designing efficient database schemas, integrating APIs, and automating complex business logic.
