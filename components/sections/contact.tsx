@@ -7,8 +7,20 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Mail, Linkedin, Instagram, Github, Send } from "lucide-react"
 import Link from "next/link"
 import { SectionWrapper } from "@/components/section-wrapper"
+import { useState } from "react"
 
 export function Contact() {
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [message, setMessage] = useState("");
+
+    const handleSendEmail = () => {
+        const subject = `Message from ${name || 'Portfolio Visitor'}`;
+        const body = `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`;
+        const mailtoLink = `mailto:mggart39@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        window.location.href = mailtoLink;
+    };
+
     return (
         <SectionWrapper id="contact" className="py-20 lg:py-32">
             <div className="container px-4 md:px-6 max-w-4xl mx-auto flex flex-col items-center text-center">
@@ -51,23 +63,49 @@ export function Contact() {
                         </CardContent>
                     </Card>
 
-                    {/* Contact Form Placeholder */}
+                    {/* Contact Form */}
                     <Card className="p-6 md:p-8 text-left bg-neutral-50 dark:bg-neutral-900/50 backdrop-blur-sm border-neutral-200 dark:border-neutral-800 h-full">
-                        <form className="space-y-4 h-full flex flex-col justify-center">
+                        <div className="space-y-4 h-full flex flex-col justify-center">
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Name</label>
-                                <Input placeholder="John Doe" className="bg-background/50" />
+                                <label className="text-sm font-medium" htmlFor="name">Name</label>
+                                <Input
+                                    id="name"
+                                    value={name}
+                                    onChange={(e) => setName(e.target.value)}
+                                    placeholder="John Doe"
+                                    className="bg-background/50"
+                                />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Email</label>
-                                <Input placeholder="john@example.com" type="email" className="bg-background/50" />
+                                <label className="text-sm font-medium" htmlFor="email">Email</label>
+                                <Input
+                                    id="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    placeholder="john@example.com"
+                                    type="email"
+                                    className="bg-background/50"
+                                />
                             </div>
                             <div className="space-y-2">
-                                <label className="text-sm font-medium">Message</label>
-                                <Textarea placeholder="Your message..." className="min-h-[120px] bg-background/50" />
+                                <label className="text-sm font-medium" htmlFor="message">Message</label>
+                                <Textarea
+                                    id="message"
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                    placeholder="Your message..."
+                                    className="min-h-[120px] bg-background/50"
+                                />
                             </div>
-                            <Button className="w-full gap-2">Send Message <Send className="w-4 h-4" /></Button>
-                        </form>
+
+                            <Button
+                                type="button"
+                                onClick={handleSendEmail}
+                                className="w-full gap-2"
+                            >
+                                Send Message <Send className="w-4 h-4" />
+                            </Button>
+                        </div>
                     </Card>
                 </div>
 

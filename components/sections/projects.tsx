@@ -3,8 +3,9 @@
 import { SectionWrapper } from "@/components/section-wrapper"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ExternalLink, Github } from "lucide-react"
+import { ArrowRight, ExternalLink, Github, Sparkles } from "lucide-react"
 import Image from "next/image"
+import { motion } from "framer-motion"
 
 
 const projects = [
@@ -14,7 +15,8 @@ const projects = [
         description: "An online platform for web development agency services, featuring service listing, client order management, and responsive portfolio display.",
         tech: ["Next.js", "React", "PostgreSQL", "Stripe"],
         image: "/project1.png",
-        year: "2025"
+        year: "2025",
+        featured: true
     },
     {
         title: "Inventory System",
@@ -22,7 +24,8 @@ const projects = [
         description: "Designed relational database schemas to track stock movements. implemented automated reporting features and transaction logic to reduce errors.",
         tech: ["MySQL", "Express", "Node.js", "React"],
         image: "/project1.png",
-        year: "2024"
+        year: "2024",
+        featured: false
     },
     {
         title: "StudyLens",
@@ -30,7 +33,8 @@ const projects = [
         description: "Built a productivity platform for educational tools using modern JavaScript stacks and secure authentication.",
         tech: ["MERN Stack", "Auth0", "Tailwind"],
         image: "/project1.png",
-        year: "2025"
+        year: "2025",
+        featured: false
     },
     {
         title: "Harris Hotel",
@@ -38,82 +42,169 @@ const projects = [
         description: "Developed a comprehensive booking and informational website for Harris Hotel.",
         tech: ["PHP", "Laravel", "MySQL"],
         image: "/project1.png",
-        year: "2024"
+        year: "2024",
+        featured: false
     }
 ]
 
 export function Projects() {
     return (
-        <SectionWrapper id="projects" className="py-20  lg:py-32 overflow-hidden">
-            <div className="container px-4 md:px-6 mx-auto mb-12 flex flex-col md:flex-row items-center justify-between gap-4">
-                <div>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600 dark:from-neutral-100 dark:to-neutral-500">
-                        Featured Projects
+        <SectionWrapper id="projects" className="py-20 lg:py-32 relative overflow-hidden">
+            {/* Decorative Background */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-3xl"></div>
+
+            <div className="container px-4 md:px-6 mx-auto relative z-10">
+                {/* Section Header */}
+                <motion.div
+                    className="text-center mb-16"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/20 bg-primary/5 mb-4">
+                        <Sparkles className="w-4 h-4 text-primary" />
+                        <span className="text-sm font-medium text-primary">My Work</span>
+                    </div>
+                    <h2 className="text-4xl md:text-6xl font-black mb-4 tracking-tighter text-white drop-shadow-[0_0_10px_rgba(255,255,255,0.3)]">
+                        Featured <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-secondary">Projects</span>
                     </h2>
-                    <p className="text-muted-foreground mt-2">A selection of my recent work.</p>
-                </div>
-                <Button variant="outline" className="hidden md:flex gap-2">
-                    View All Projects <ArrowRight className="h-4 w-4" />
-                </Button>
-            </div>
+                    <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+                        A collection of projects showcasing my expertise in full-stack development and problem-solving
+                    </p>
+                </motion.div>
 
-            {/* Horizontal Scroll Gallery */}
-            <div className="flex overflow-x-auto pb-8 gap-6 px-4 md:px-6 snap-x snap-mandatory no-scrollbar" style={{ scrollbarWidth: 'none' }}>
-                {projects.map((project, i) => (
-                    <div key={i} className="flex-none w-[85vw] md:w-[600px] snap-center">
-                        <div className="group relative rounded-3xl overflow-hidden border border-border/50 bg-neutral-100 dark:bg-neutral-900/50 aspect-video">
-                            {/* Image */}
-                            <div className="absolute inset-0">
-                                <Image
-                                    src={project.image}
-                                    alt={project.title}
-                                    fill
-                                    className="object-cover group-hover:scale-105 transition-transform duration-500"
-                                />
-                                <div className="absolute inset-0 bg-black/60 group-hover:bg-black/40 transition-colors duration-500" />
-                            </div>
+                {/* Projects Grid */}
+                <div className="space-y-12 max-w-6xl mx-auto">
+                    {projects.map((project, index) => (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, y: 50 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
+                            className={`flex flex-col ${index % 2 === 0 ? 'lg:flex-row' : 'lg:flex-row-reverse'
+                                } gap-8 items-center`}
+                        >
+                            {/* Project Image */}
+                            <motion.div
+                                className="relative w-full lg:w-1/2 group"
+                                whileHover={{ scale: 1.02 }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <div className="relative aspect-video rounded-2xl overflow-hidden border border-border/50 bg-muted">
+                                    {/* Glow Effect */}
+                                    <div className="absolute -inset-1 bg-gradient-to-r from-primary/20 via-secondary/20 to-primary/20 rounded-2xl blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
 
-                            {/* Content Overlay */}
-                            <div className="absolute inset-0 p-6 md:p-8 flex flex-col justify-end">
-                                <div className="space-y-4 translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                    <div className="flex justify-between items-start">
-                                        <div>
-                                            <Badge variant="default" className="mb-2 hover:bg-primary/80">{project.category}</Badge>
-                                            <h3 className="text-2xl md:text-4xl font-bold text-white">{project.title}</h3>
+                                    <div className="relative h-full w-full">
+                                        <Image
+                                            src={project.image}
+                                            alt={project.title}
+                                            fill
+                                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+
+                                        {/* Year Badge */}
+                                        <div className="absolute top-4 right-4">
+                                            <Badge variant="secondary" className="bg-black/50 backdrop-blur-sm text-white border-white/20">
+                                                {project.year}
+                                            </Badge>
                                         </div>
-                                        <div className="text-white/60 font-mono text-sm">{project.year}</div>
-                                    </div>
 
-                                    <p className="text-neutral-200 max-w-lg line-clamp-2 group-hover:line-clamp-none transition-all">
-                                        {project.description}
-                                    </p>
-
-                                    {/* Tech Stack & Links */}
-                                    <div className="pt-4 flex flex-wrap gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-100">
-                                        {project.tech.map(t => (
-                                            <Badge key={t} variant="secondary" className="bg-black/50 text-white hover:bg-black/70 border-white/20">{t}</Badge>
-                                        ))}
-                                    </div>
-
-                                    <div className="pt-2 flex gap-3 opacity-0 group-hover:opacity-100 transition-opacity duration-300 delay-200">
-                                        <Button size="sm" className="gap-2">
-                                            Visit Site <ExternalLink className="h-3 w-3" />
-                                        </Button>
-                                        <Button size="sm" variant="outline" className="gap-2 bg-transparent text-white border-white hover:bg-white hover:text-black">
-                                            <Github className="h-3 w-3" /> Source
-                                        </Button>
+                                        {/* Featured Badge */}
+                                        {project.featured && (
+                                            <div className="absolute top-4 left-4">
+                                                <Badge className="bg-primary/90 backdrop-blur-sm text-black border-primary">
+                                                    <Sparkles className="w-3 h-3 mr-1" />
+                                                    Featured
+                                                </Badge>
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                            </motion.div>
 
-            <div className="md:hidden px-4 mt-6">
-                <Button variant="outline" className="w-full gap-2">
-                    View All Projects <ArrowRight className="h-4 w-4" />
-                </Button>
+                            {/* Project Info */}
+                            <div className="w-full lg:w-1/2 space-y-4">
+                                <motion.div
+                                    initial={{ opacity: 0, x: index % 2 === 0 ? 50 : -50 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.2 }}
+                                >
+                                    <Badge variant="outline" className="mb-3 border-primary/30 text-primary">
+                                        {project.category}
+                                    </Badge>
+                                    <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                                        {project.title}
+                                    </h3>
+                                    <p className="text-muted-foreground leading-relaxed text-lg mb-6">
+                                        {project.description}
+                                    </p>
+                                </motion.div>
+
+                                {/* Tech Stack */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.3 }}
+                                    className="flex flex-wrap gap-2 mb-6"
+                                >
+                                    {project.tech.map((tech, i) => (
+                                        <motion.div
+                                            key={tech}
+                                            initial={{ opacity: 0, scale: 0.8 }}
+                                            whileInView={{ opacity: 1, scale: 1 }}
+                                            viewport={{ once: true }}
+                                            transition={{ duration: 0.3, delay: 0.4 + i * 0.05 }}
+                                        >
+                                            <Badge
+                                                variant="secondary"
+                                                className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 transition-colors"
+                                            >
+                                                {tech}
+                                            </Badge>
+                                        </motion.div>
+                                    ))}
+                                </motion.div>
+
+                                {/* Action Buttons */}
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    whileInView={{ opacity: 1 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.6, delay: 0.5 }}
+                                    className="flex gap-3"
+                                >
+                                    <Button className="gap-2 group">
+                                        Visit Site
+                                        <ExternalLink className="h-4 w-4 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                                    </Button>
+                                    <Button variant="outline" className="gap-2 group">
+                                        <Github className="h-4 w-4 group-hover:rotate-12 transition-transform" />
+                                        Source
+                                    </Button>
+                                </motion.div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* View All Button */}
+                <motion.div
+                    className="text-center mt-16"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                >
+                    <Button variant="outline" size="lg" className="gap-2 group">
+                        View All Projects
+                        <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                </motion.div>
             </div>
         </SectionWrapper>
     )

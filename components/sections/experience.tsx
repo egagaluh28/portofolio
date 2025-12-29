@@ -2,6 +2,7 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { SectionWrapper } from "@/components/section-wrapper"
+import { ArrowRight, ExternalLink, Github, Sparkles } from "lucide-react"
 
 const experiences = [
     {
