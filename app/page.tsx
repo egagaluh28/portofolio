@@ -1,11 +1,11 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { Hero } from "@/components/sections/hero";
-import { About } from "@/components/sections/about";
-import { Experience } from "@/components/sections/experience";
-import { Projects } from "@/components/sections/projects";
+import { Hero } from "@/components/sections/hero-server";
+import { About } from "@/components/sections/about-server";
+import { Experience } from "@/components/sections/experience-server";
+import { Projects } from "@/components/sections/projects-server";
 import { Certificates } from "@/components/sections/certificates";
-import { Education } from "@/components/sections/education";
+import { Education } from "@/components/sections/education-server";
 
 import { Contact } from "@/components/sections/contact";
 import { Background } from "@/components/layout/background";

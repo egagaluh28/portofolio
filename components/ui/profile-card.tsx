@@ -2,10 +2,34 @@
 
 import { motion } from "framer-motion"
 import Image from "next/image"
-import { Github, Linkedin, Mail } from "lucide-react"
+import { Github, Linkedin, Mail, Twitter, Instagram } from "lucide-react"
 import Link from "next/link"
 
-export function ProfileCard() {
+interface ProfileCardProps {
+    profile?: {
+        name: string
+        title: string
+        profileImage: string
+    }
+    socialLinks?: any[]
+}
+
+export function ProfileCard({ profile, socialLinks = [] }: ProfileCardProps) {
+    const name = profile?.name || "Muhammad Galuh Gumelar"
+    const title = profile?.title || "Software Engineer"
+    const image = profile?.profileImage || "/poto.jpeg"
+
+    const getSocialIcon = (platform: string) => {
+        switch (platform.toLowerCase()) {
+            case 'github': return Github
+            case 'linkedin': return Linkedin
+            case 'instagram': return Instagram
+            case 'twitter': return Twitter
+            case 'email': return Mail
+            default: return Github
+        }
+    }
+
     return (
         <div className="relative group w-80 h-[450px] md:w-96 md:h-[500px] perspective-1000">
             <motion.div
@@ -21,8 +45,8 @@ export function ProfileCard() {
                     {/* Profile Image as Background */}
                     <div className="absolute inset-0">
                         <Image
-                            src="/poto.jpeg"
-                            alt="Muhammad Galuh Gumelar"
+                            src={image}
+                            alt={name}
                             fill
                             className="object-cover"
                             priority
@@ -41,22 +65,38 @@ export function ProfileCard() {
                         <div className="text-center space-y-4 mb-4">
                             <div className="space-y-2">
                                 <h3 className="text-2xl font-bold text-white drop-shadow-lg">
-                                    Muhammad Galuh Gumelar
+                                    {name}
                                 </h3>
-                                <p className="text-sm text-primary/90 font-mono drop-shadow-md">Software Engineer</p>
+                                <p className="text-sm text-primary/90 font-mono drop-shadow-md">{title}</p>
                             </div>
 
                             {/* Socials */}
                             <div className="flex gap-4 justify-center">
-                                <Link href="#" className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-primary/30 transition-all text-white hover:text-primary hover:scale-110 transform duration-200 border border-white/20">
-                                    <Github className="w-5 h-5" />
-                                </Link>
-                                <Link href="#" className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-primary/30 transition-all text-white hover:text-primary hover:scale-110 transform duration-200 border border-white/20">
-                                    <Linkedin className="w-5 h-5" />
-                                </Link>
-                                <Link href="#" className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-primary/30 transition-all text-white hover:text-primary hover:scale-110 transform duration-200 border border-white/20">
-                                    <Mail className="w-5 h-5" />
-                                </Link>
+                                {socialLinks.length > 0 ? (
+                                    socialLinks.map((link) => {
+                                        const Icon = getSocialIcon(link.platform)
+                                        return (
+                                            <Link
+                                                key={link.id}
+                                                href={link.url}
+                                                target="_blank"
+                                                className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-primary/30 transition-all text-white hover:text-primary hover:scale-110 transform duration-200 border border-white/20"
+                                            >
+                                                <Icon className="w-5 h-5" />
+                                            </Link>
+                                        )
+                                    })
+                                ) : (
+                                    // Fallback socials if none
+                                    <>
+                                        <Link href="#" className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-primary/30 transition-all text-white hover:text-primary hover:scale-110 transform duration-200 border border-white/20">
+                                            <Github className="w-5 h-5" />
+                                        </Link>
+                                        <Link href="#" className="p-2.5 rounded-full bg-white/10 backdrop-blur-sm hover:bg-primary/30 transition-all text-white hover:text-primary hover:scale-110 transform duration-200 border border-white/20">
+                                            <Linkedin className="w-5 h-5" />
+                                        </Link>
+                                    </>
+                                )}
                             </div>
                         </div>
                     </div>

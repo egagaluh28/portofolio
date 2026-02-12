@@ -1,0 +1,140 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// User/Admin
+model User {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+// Profile/Hero Section
+model Profile {
+  id           String   @id @default(cuid())
+  name         String
+  title        String
+  tagline      String
+  bio          String   @db.Text
+  available    Boolean  @default(true)
+  resumeUrl    String?
+  profileImage String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+// About Section
+model About {
+  id          String   @id @default(cuid())
+  paragraph1  String   @db.Text
+  paragraph2  String   @db.Text
+  yearsExp    String
+  projects    String
+  technologies String
+  collaborations String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Experience
+model Experience {
+  id          String   @id @default(cuid())
+  role        String
+  company     String
+  location    String
+  period      String
+  description String   @db.Text
+  tags        String[] // Array of tags
+  current     Boolean  @default(false)
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([order])
+}
+
+// Education
+model Education {
+  id          String   @id @default(uuid())
+  degree      String
+  institution String
+  location    String
+  period      String
+  description String?
+  gpa         String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Projects
+model Project {
+  id          String   @id @default(cuid())
+  title       String
+  category    String
+  description String   @db.Text
+  tech        String[] // Array of technologies
+  image       String
+  year        String
+  featured    Boolean  @default(false)
+  liveUrl     String?
+  githubUrl   String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([order])
+  @@index([featured])
+}
+
+// Skills
+model Skill {
+  id        String   @id @default(cuid())
+  name      String
+  type      String   // "hard" or "soft"
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type])
+  @@index([order])
+}
+
+// Certificates
+model Certificate {
+  id          String   @id @default(cuid())
+  title       String
+  issuer      String
+  date        String
+  description String?  @db.Text
+  credentialUrl String?
+  image       String?
+  order       Int      @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([order])
+}
+
+// Social Links
+model SocialLink {
+  id        String   @id @default(cuid())
+  platform  String   // "github", "linkedin", "instagram", "email"
+  url       String
+  icon      String?
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([order])
+}
